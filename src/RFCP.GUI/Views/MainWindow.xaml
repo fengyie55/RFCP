@@ -7,30 +7,49 @@
         Title="RFCP - Robot Flexible Control Platform"
         Width="1680"
         Height="980"
-        Background="#0B4D57"
         MinWidth="1366"
-        MinHeight="768">
+        MinHeight="768"
+        Background="#08151F">
     <Window.Resources>
-        <SolidColorBrush x:Key="HeaderBrush" Color="#0A4A54" />
-        <SolidColorBrush x:Key="PanelBrush" Color="#E9ECEF" />
-        <SolidColorBrush x:Key="TileBrush" Color="#0F7285" />
-        <SolidColorBrush x:Key="AccentBrush" Color="#2AA8C6" />
-        <Style x:Key="ActionButtonStyle" TargetType="Button">
-            <Setter Property="Background" Value="#DCE5EB" />
-            <Setter Property="BorderBrush" Value="#A5B4BE" />
+        <SolidColorBrush x:Key="ShellBackgroundBrush" Color="#08151F" />
+        <SolidColorBrush x:Key="PanelBackgroundBrush" Color="#102535" />
+        <SolidColorBrush x:Key="PanelSecondaryBrush" Color="#173549" />
+        <SolidColorBrush x:Key="PanelTertiaryBrush" Color="#1D4157" />
+        <SolidColorBrush x:Key="SurfaceBrush" Color="#EAF0F4" />
+        <SolidColorBrush x:Key="TextPrimaryBrush" Color="#E8F4FF" />
+        <SolidColorBrush x:Key="TextSecondaryBrush" Color="#9EB8CB" />
+        <SolidColorBrush x:Key="AccentBrush" Color="#00A7C4" />
+        <SolidColorBrush x:Key="AccentPositiveBrush" Color="#2DE38F" />
+        <SolidColorBrush x:Key="AccentWarningBrush" Color="#FFB547" />
+        <SolidColorBrush x:Key="BorderBrush" Color="#2A4E66" />
+
+        <Style x:Key="PanelBorderStyle" TargetType="Border">
+            <Setter Property="CornerRadius" Value="10" />
+            <Setter Property="Padding" Value="10" />
+            <Setter Property="BorderBrush" Value="{StaticResource BorderBrush}" />
             <Setter Property="BorderThickness" Value="1" />
-            <Setter Property="Foreground" Value="#12343E" />
+        </Style>
+
+        <Style x:Key="ActionButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="#F7FBFF" />
+            <Setter Property="BorderBrush" Value="#B4C7D5" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="Foreground" Value="#133447" />
             <Setter Property="Margin" Value="4" />
             <Setter Property="Padding" Value="10,6" />
+            <Setter Property="MinHeight" Value="36" />
         </Style>
+
         <Style x:Key="SidebarButtonStyle" TargetType="Button">
-            <Setter Property="Background" Value="#0B6A7B" />
-            <Setter Property="BorderBrush" Value="#2EA4BB" />
+            <Setter Property="Background" Value="#173549" />
+            <Setter Property="BorderBrush" Value="#2A5F7C" />
             <Setter Property="BorderThickness" Value="1" />
-            <Setter Property="Foreground" Value="#D8F8FF" />
-            <Setter Property="FontSize" Value="26" />
-            <Setter Property="Margin" Value="0,6" />
-            <Setter Property="Height" Value="54" />
+            <Setter Property="Foreground" Value="{StaticResource TextPrimaryBrush}" />
+            <Setter Property="FontSize" Value="17" />
+            <Setter Property="FontWeight" Value="SemiBold" />
+            <Setter Property="Margin" Value="0,0,0,8" />
+            <Setter Property="Padding" Value="10,8" />
+            <Setter Property="Height" Value="52" />
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
@@ -41,113 +60,154 @@
                 </Setter.Value>
             </Setter>
         </Style>
+
+        <Style x:Key="BottomNavButtonStyle" TargetType="Button" BasedOn="{StaticResource SidebarButtonStyle}">
+            <Setter Property="FontSize" Value="16" />
+            <Setter Property="Margin" Value="4,0" />
+            <Setter Property="Height" Value="52" />
+            <Setter Property="Background" Value="#1B3F56" />
+        </Style>
+
+        <Style x:Key="KpiCardStyle" TargetType="Border" BasedOn="{StaticResource PanelBorderStyle}">
+            <Setter Property="Background" Value="#113248" />
+            <Setter Property="Margin" Value="0,0,8,0" />
+        </Style>
+
+        <Style TargetType="GroupBox">
+            <Setter Property="Foreground" Value="#26465C" />
+            <Setter Property="Margin" Value="0,0,0,8" />
+            <Setter Property="FontWeight" Value="SemiBold" />
+        </Style>
     </Window.Resources>
 
-    <Grid Margin="8">
+    <Grid Margin="10">
         <Grid.RowDefinitions>
-            <RowDefinition Height="88" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
-            <RowDefinition Height="84" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="116" />
+            <ColumnDefinition Width="210" />
         </Grid.ColumnDefinitions>
 
-        <!-- Header -->
-        <Border Grid.Row="0" Grid.Column="0" Background="{StaticResource HeaderBrush}" BorderBrush="#87AAB1" BorderThickness="1" Padding="8">
+        <Border Grid.Row="0" Grid.Column="0" Background="{StaticResource PanelBackgroundBrush}" Style="{StaticResource PanelBorderStyle}">
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="248" />
-                    <ColumnDefinition Width="170" />
+                    <ColumnDefinition Width="300" />
+                    <ColumnDefinition Width="340" />
                     <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="248" />
+                    <ColumnDefinition Width="260" />
                 </Grid.ColumnDefinitions>
 
                 <StackPanel Grid.Column="0" VerticalAlignment="Center">
-                    <TextBlock Text="瑞辉智能" Foreground="#D6FAFF" FontSize="40" FontWeight="SemiBold" />
-                    <TextBlock Text="RuiHui Intelligent" Foreground="#9FDDE6" FontSize="22" />
+                    <TextBlock Text="瑞辉智能柔性机器人控制平台" Foreground="{StaticResource TextPrimaryBrush}" FontSize="30" FontWeight="Bold" />
+                    <TextBlock Text="Deterministic Control • Action Pipeline • Plugin Drivers" Foreground="{StaticResource TextSecondaryBrush}" FontSize="14" Margin="0,3,0,0" />
                 </StackPanel>
 
-                <StackPanel Grid.Column="1" Margin="8,0,0,0" VerticalAlignment="Center">
-                    <Border Background="#073E47" BorderBrush="#38B9D2" BorderThickness="1" Margin="0,2">
-                        <TextBlock Text="2024-09-12 16:05:51" Foreground="#21F7A3" Padding="6,4" />
+                <UniformGrid Grid.Column="1" Rows="1" Columns="3" Margin="12,0,12,0">
+                    <Border Style="{StaticResource KpiCardStyle}">
+                        <StackPanel>
+                            <TextBlock Text="系统状态" Foreground="{StaticResource TextSecondaryBrush}" FontSize="12" />
+                            <TextBlock Text="RUNNING" Foreground="{StaticResource AccentPositiveBrush}" FontSize="18" FontWeight="Bold" />
+                        </StackPanel>
                     </Border>
-                    <Border Background="#073E47" BorderBrush="#38B9D2" BorderThickness="1" Margin="0,2">
-                        <TextBlock Text="Control: Local" Foreground="#21F7A3" Padding="6,4" />
+                    <Border Style="{StaticResource KpiCardStyle}">
+                        <StackPanel>
+                            <TextBlock Text="控制模式" Foreground="{StaticResource TextSecondaryBrush}" FontSize="12" />
+                            <TextBlock Text="AUTO" Foreground="{StaticResource AccentBrush}" FontSize="18" FontWeight="Bold" />
+                        </StackPanel>
                     </Border>
-                    <Border Background="#073E47" BorderBrush="#38B9D2" BorderThickness="1" Margin="0,2">
-                        <TextBlock Text="Comm: Enabled" Foreground="#21F7A3" Padding="6,4" />
+                    <Border Style="{StaticResource KpiCardStyle}" Margin="0">
+                        <StackPanel>
+                            <TextBlock Text="通信质量" Foreground="{StaticResource TextSecondaryBrush}" FontSize="12" />
+                            <TextBlock Text="98.7%" Foreground="{StaticResource AccentWarningBrush}" FontSize="18" FontWeight="Bold" />
+                        </StackPanel>
                     </Border>
-                </StackPanel>
+                </UniformGrid>
 
-                <Border Grid.Column="2" Margin="8,0" Background="#94BEC4" BorderBrush="#DBE6E8" BorderThickness="1">
+                <Border Grid.Column="2" Background="#0D2030" BorderBrush="#284A62" BorderThickness="1" CornerRadius="8" Padding="8">
                     <Grid>
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="30" />
-                            <RowDefinition Height="*" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
                         </Grid.RowDefinitions>
-                        <Grid Grid.Row="0" Background="#F2F3F5">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="120" />
-                                <ColumnDefinition Width="120" />
-                                <ColumnDefinition Width="120" />
-                                <ColumnDefinition Width="*" />
-                            </Grid.ColumnDefinitions>
-                            <TextBlock Grid.Column="0" Text="Date" FontWeight="Bold" VerticalAlignment="Center" Margin="8,0" />
-                            <TextBlock Grid.Column="1" Text="Time" FontWeight="Bold" VerticalAlignment="Center" Margin="8,0" />
-                            <TextBlock Grid.Column="2" Text="ID" FontWeight="Bold" VerticalAlignment="Center" Margin="8,0" />
-                            <TextBlock Grid.Column="3" Text="Event" FontWeight="Bold" VerticalAlignment="Center" Margin="8,0" />
-                        </Grid>
+                        <TextBlock Text="事件总线状态：正常（InMemoryEventBus）" Foreground="{StaticResource TextPrimaryBrush}" FontSize="14" />
+                        <TextBlock Grid.Row="1" Margin="0,4,0,0" Text="动作管线：已装载 24 个步骤，周期 20ms" Foreground="{StaticResource TextSecondaryBrush}" FontSize="13" />
+                        <TextBlock Grid.Row="2" Margin="0,4,0,0" Text="最近告警：无严重告警" Foreground="#B7D4E6" FontSize="13" />
                     </Grid>
                 </Border>
 
-                <Grid Grid.Column="3" Margin="8,0,0,0">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="70" />
-                        <ColumnDefinition Width="70" />
-                        <ColumnDefinition Width="*" />
-                    </Grid.ColumnDefinitions>
-                    <Border Grid.Column="0" CornerRadius="8" Background="#B40000" Margin="8,10" />
-                    <Border Grid.Column="1" CornerRadius="8" Background="#0F90A8" Margin="8,10" />
-                    <StackPanel Grid.Column="2" VerticalAlignment="Center">
-                        <TextBlock Text="User  OEM-User" Foreground="#D2F6FF" FontSize="18" Margin="0,2" />
-                        <TextBlock Text="Group OEM" Foreground="#D2F6FF" FontSize="18" Margin="0,2" />
-                    </StackPanel>
-                </Grid>
+                <StackPanel Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Right">
+                    <TextBlock Text="2024-09-12 16:05:51" Foreground="{StaticResource TextPrimaryBrush}" FontSize="17" HorizontalAlignment="Right" />
+                    <TextBlock Text="User: OEM-User / Group: OEM" Foreground="{StaticResource TextSecondaryBrush}" FontSize="13" HorizontalAlignment="Right" Margin="0,4,0,0" />
+                </StackPanel>
             </Grid>
         </Border>
 
-        <!-- Main content -->
-        <Grid Grid.Row="1" Grid.Column="0" Margin="0,8,8,8">
+        <Border Grid.Row="1" Grid.Column="0" Background="{StaticResource PanelSecondaryBrush}" Style="{StaticResource PanelBorderStyle}" Margin="0,10,0,0">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="220" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Button Content="开始示例任务" Command="{Binding StartSampleTaskCommand}" Style="{StaticResource ActionButtonStyle}" Background="{StaticResource AccentBrush}" Foreground="White" FontWeight="SemiBold" Margin="0" />
+
+                <Border Grid.Column="1" Margin="12,0,0,0" Background="#0E2435" CornerRadius="8" BorderBrush="#2A4F66" BorderThickness="1" Padding="12,8">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="120" />
+                            <ColumnDefinition Width="120" />
+                            <ColumnDefinition Width="120" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" Text="Date" Foreground="{StaticResource TextSecondaryBrush}" FontWeight="Bold" />
+                        <TextBlock Grid.Column="1" Text="Time" Foreground="{StaticResource TextSecondaryBrush}" FontWeight="Bold" />
+                        <TextBlock Grid.Column="2" Text="ID" Foreground="{StaticResource TextSecondaryBrush}" FontWeight="Bold" />
+                        <TextBlock Grid.Column="3" Text="Event" Foreground="{StaticResource TextSecondaryBrush}" FontWeight="Bold" />
+                    </Grid>
+                </Border>
+            </Grid>
+        </Border>
+
+        <Grid Grid.Row="2" Grid.Column="0" Margin="0,10,10,10">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="1.7*" />
+                <ColumnDefinition Width="1.8*" />
                 <ColumnDefinition Width="1*" />
             </Grid.ColumnDefinitions>
 
-            <Border Grid.Column="0" Background="{StaticResource PanelBrush}" BorderBrush="#7B8C94" BorderThickness="1" Padding="12">
+            <Border Grid.Column="0" Background="{StaticResource SurfaceBrush}" Style="{StaticResource PanelBorderStyle}">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
-                    <DockPanel>
-                        <TextBlock Text="MFB1" FontSize="52" FontFamily="Times New Roman" FontWeight="Bold" HorizontalAlignment="Center" />
-                        <Button DockPanel.Dock="Right" Content="Start Sample Task" Command="{Binding StartSampleTaskCommand}" Style="{StaticResource ActionButtonStyle}" />
+
+                    <DockPanel LastChildFill="False" Margin="0,0,0,10">
+                        <TextBlock Text="MFB1 工艺总览" FontSize="28" FontWeight="Bold" Foreground="#173246" />
+                        <Border DockPanel.Dock="Right" Background="#173549" BorderBrush="#2F627E" BorderThickness="1" CornerRadius="6" Padding="10,5">
+                            <TextBlock Text="控制周期：20ms" Foreground="{StaticResource TextPrimaryBrush}" FontSize="13" />
+                        </Border>
                     </DockPanel>
-                    <Canvas Grid.Row="1" Margin="8" Background="#F7F9FA">
-                        <Rectangle Width="680" Height="460" Stroke="#A6AAAE" StrokeThickness="5" Canvas.Left="54" Canvas.Top="34" />
-                        <Rectangle Width="380" Height="210" Stroke="#A6AAAE" StrokeThickness="4" Canvas.Left="290" Canvas.Top="150" />
-                        <Rectangle Width="260" Height="136" Stroke="#C5C9CD" Fill="#F2F3F5" StrokeThickness="2" Canvas.Left="570" Canvas.Top="430" />
-                        <Rectangle Width="300" Height="136" Stroke="#C5C9CD" Fill="#F2F3F5" StrokeThickness="2" Canvas.Left="860" Canvas.Top="430" />
-                        <TextBlock Text="Mixing Valve" FontSize="36" FontWeight="SemiBold" Canvas.Left="620" Canvas.Top="480" />
-                        <TextBlock Text="Drain BOX" FontSize="40" FontWeight="SemiBold" Canvas.Left="940" Canvas.Top="495" />
-                        <TextBlock Text="工艺流程区域占位：管路图、阀门、传感器、动画状态" Foreground="#6A7780" FontSize="24" Canvas.Left="330" Canvas.Top="300" />
-                    </Canvas>
+
+                    <Grid Grid.Row="1" Background="#F7FBFF">
+                        <Canvas Margin="8">
+                            <Rectangle Width="680" Height="460" Stroke="#4F6D80" StrokeThickness="4" RadiusX="12" RadiusY="12" Canvas.Left="44" Canvas.Top="24" />
+                            <Rectangle Width="380" Height="210" Stroke="#67869B" StrokeThickness="3" RadiusX="8" RadiusY="8" Canvas.Left="274" Canvas.Top="64" />
+                            <Rectangle Width="280" Height="130" Stroke="#9AAAB5" Fill="#EFF3F7" StrokeThickness="2" RadiusX="6" RadiusY="6" Canvas.Left="548" Canvas.Top="414" />
+                            <Rectangle Width="300" Height="130" Stroke="#9AAAB5" Fill="#EFF3F7" StrokeThickness="2" RadiusX="6" RadiusY="6" Canvas.Left="850" Canvas.Top="414" />
+                            <TextBlock Text="Mixing Valve" FontSize="28" FontWeight="SemiBold" Foreground="#1C3C52" Canvas.Left="598" Canvas.Top="458" />
+                            <TextBlock Text="Drain Box" FontSize="30" FontWeight="SemiBold" Foreground="#1C3C52" Canvas.Left="930" Canvas.Top="470" />
+                            <TextBlock Text="工艺流程区（管路图 / 阀门 / 传感器 / 动画状态）" Foreground="#5E7483" FontSize="22" Canvas.Left="260" Canvas.Top="290" />
+                        </Canvas>
+                    </Grid>
                 </Grid>
             </Border>
 
-            <Border Grid.Column="1" Background="#DFE3E7" BorderBrush="#7B8C94" BorderThickness="1" Padding="8" Margin="8,0,0,0">
+            <Border Grid.Column="1" Background="#E2EAF0" Style="{StaticResource PanelBorderStyle}" Margin="10,0,0,0">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />
@@ -157,62 +217,61 @@
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
 
-                    <GroupBox Header="Module Operations" Margin="0,0,0,8">
+                    <GroupBox Header="动作管线操作">
                         <WrapPanel>
-                            <Button Content="Initialize" Style="{StaticResource ActionButtonStyle}" MinWidth="120" />
-                            <Button Content="PreProcess" Style="{StaticResource ActionButtonStyle}" MinWidth="120" />
-                            <Button Content="DoProcess" Style="{StaticResource ActionButtonStyle}" MinWidth="120" />
-                            <Button Content="PostProcess" Style="{StaticResource ActionButtonStyle}" MinWidth="120" />
-                            <Button Content="Manual" Style="{StaticResource ActionButtonStyle}" MinWidth="100" />
-                            <Button Content="Auto" Style="{StaticResource ActionButtonStyle}" MinWidth="100" Background="#FA4977" Foreground="White" />
+                            <Button Content="Initialize" Style="{StaticResource ActionButtonStyle}" MinWidth="100" />
+                            <Button Content="PreProcess" Style="{StaticResource ActionButtonStyle}" MinWidth="100" />
+                            <Button Content="DoProcess" Style="{StaticResource ActionButtonStyle}" MinWidth="100" />
+                            <Button Content="PostProcess" Style="{StaticResource ActionButtonStyle}" MinWidth="100" />
+                            <Button Content="Manual" Style="{StaticResource ActionButtonStyle}" MinWidth="90" />
+                            <Button Content="Auto" Style="{StaticResource ActionButtonStyle}" MinWidth="90" Background="{StaticResource AccentBrush}" Foreground="White" />
                         </WrapPanel>
                     </GroupBox>
 
-                    <UniformGrid Grid.Row="1" Rows="2" Columns="2" Margin="0,0,0,8">
+                    <UniformGrid Grid.Row="1" Rows="2" Columns="2">
                         <GroupBox Header="Chemical" Margin="0,0,8,8"><Button Content="Supply" Style="{StaticResource ActionButtonStyle}" /></GroupBox>
                         <GroupBox Header="Drain" Margin="0,0,0,8"><Button Content="Start" Style="{StaticResource ActionButtonStyle}" /></GroupBox>
                         <GroupBox Header="DIW Operation" Margin="0,0,8,0"><Button Content="Start" Style="{StaticResource ActionButtonStyle}" /></GroupBox>
                         <GroupBox Header="QDR"><Button Content="Check" Style="{StaticResource ActionButtonStyle}" /></GroupBox>
                     </UniformGrid>
 
-                    <UniformGrid Grid.Row="2" Rows="1" Columns="2" Margin="0,0,0,8">
+                    <UniformGrid Grid.Row="2" Rows="1" Columns="2">
                         <GroupBox Header="Megasonics 1" Margin="0,0,8,0"><Button Content="Select" Style="{StaticResource ActionButtonStyle}" /></GroupBox>
                         <GroupBox Header="Megasonics 2"><Button Content="Select" Style="{StaticResource ActionButtonStyle}" /></GroupBox>
                     </UniformGrid>
 
-                    <UniformGrid Grid.Row="3" Rows="1" Columns="2" Margin="0,0,0,8">
+                    <UniformGrid Grid.Row="3" Rows="1" Columns="2">
                         <GroupBox Header="Lift" Margin="0,0,8,0"><Button Content="MoveTo" Style="{StaticResource ActionButtonStyle}" /></GroupBox>
                         <GroupBox Header="Agitation"><Button Content="On / Off" Style="{StaticResource ActionButtonStyle}" /></GroupBox>
                     </UniformGrid>
 
-                    <GroupBox Grid.Row="4" Header="System Status">
-                        <TextBlock Margin="8" FontSize="16" TextWrapping="Wrap" Text="{Binding Status}" />
+                    <GroupBox Grid.Row="4" Header="系统状态与运行说明" Margin="0">
+                        <TextBlock Margin="8" FontSize="14" Foreground="#173246" TextWrapping="Wrap" Text="{Binding Status}" />
                     </GroupBox>
                 </Grid>
             </Border>
         </Grid>
 
-        <!-- Right sidebar -->
-        <Border Grid.Row="0" Grid.RowSpan="2" Grid.Column="1" Background="#094753" BorderBrush="#2E889A" BorderThickness="1" Padding="8">
+        <Border Grid.Row="0" Grid.RowSpan="3" Grid.Column="1" Background="{StaticResource PanelBackgroundBrush}" Style="{StaticResource PanelBorderStyle}" Margin="0,0,0,10">
             <StackPanel>
-                <Button Content="Equipment\nControl" Style="{StaticResource SidebarButtonStyle}" />
-                <Button Content="Material\nMovement" Style="{StaticResource SidebarButtonStyle}" />
+                <TextBlock Text="模块导航" Foreground="{StaticResource TextSecondaryBrush}" FontSize="14" Margin="0,0,0,10" />
+                <Button Content="Equipment Control" Style="{StaticResource SidebarButtonStyle}" />
+                <Button Content="Material Movement" Style="{StaticResource SidebarButtonStyle}" />
                 <Button Content="SPM" Style="{StaticResource SidebarButtonStyle}" />
                 <Button Content="HQDR" Style="{StaticResource SidebarButtonStyle}" />
                 <Button Content="DHF" Style="{StaticResource SidebarButtonStyle}" />
                 <Button Content="QDR" Style="{StaticResource SidebarButtonStyle}" />
-                <Button Content="MFB1" Style="{StaticResource SidebarButtonStyle}" />
+                <Button Content="MFB1" Style="{StaticResource SidebarButtonStyle}" Background="#1F5875" BorderBrush="{StaticResource AccentBrush}" />
                 <Button Content="MFB2" Style="{StaticResource SidebarButtonStyle}" />
                 <Button Content="Dryer" Style="{StaticResource SidebarButtonStyle}" />
                 <Button Content="CC" Style="{StaticResource SidebarButtonStyle}" />
                 <Button Content="WTS" Style="{StaticResource SidebarButtonStyle}" />
                 <Button Content="GTR" Style="{StaticResource SidebarButtonStyle}" />
-                <Button Content="CSB" Style="{StaticResource SidebarButtonStyle}" />
+                <Button Content="CSB" Style="{StaticResource SidebarButtonStyle}" Margin="0" />
             </StackPanel>
         </Border>
 
-        <!-- Bottom navigation -->
-        <Border Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Background="#094A56" BorderBrush="#2E889A" BorderThickness="1" Padding="10,8">
+        <Border Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Background="{StaticResource PanelTertiaryBrush}" Style="{StaticResource PanelBorderStyle}">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
@@ -227,16 +286,16 @@
                     <ColumnDefinition Width="130" />
                 </Grid.ColumnDefinitions>
 
-                <Button Grid.Column="0" Content="OverView" Style="{StaticResource SidebarButtonStyle}" Height="64" Margin="4" />
-                <Button Grid.Column="1" Content="Jobs" Style="{StaticResource SidebarButtonStyle}" Height="64" Margin="4" />
-                <Button Grid.Column="2" Content="Recipe" Style="{StaticResource SidebarButtonStyle}" Height="64" Margin="4" />
-                <Button Grid.Column="3" Content="Parameter" Style="{StaticResource SidebarButtonStyle}" Height="64" Margin="4" />
-                <Button Grid.Column="4" Content="System" Style="{StaticResource SidebarButtonStyle}" Height="64" Margin="4" />
-                <Button Grid.Column="5" Content="Alarms" Style="{StaticResource SidebarButtonStyle}" Height="64" Margin="4" />
-                <Button Grid.Column="6" Content="Log" Style="{StaticResource SidebarButtonStyle}" Height="64" Margin="4" />
-                <Button Grid.Column="7" Content="User Management" Style="{StaticResource SidebarButtonStyle}" Height="64" Margin="4" />
-                <Button Grid.Column="8" Content="OEM" Style="{StaticResource SidebarButtonStyle}" Height="64" Margin="4" />
-                <Button Grid.Column="9" Content="Exit" Style="{StaticResource SidebarButtonStyle}" Height="64" Margin="4" Background="{StaticResource AccentBrush}" />
+                <Button Grid.Column="0" Content="OverView" Style="{StaticResource BottomNavButtonStyle}" />
+                <Button Grid.Column="1" Content="Jobs" Style="{StaticResource BottomNavButtonStyle}" />
+                <Button Grid.Column="2" Content="Recipe" Style="{StaticResource BottomNavButtonStyle}" />
+                <Button Grid.Column="3" Content="Parameter" Style="{StaticResource BottomNavButtonStyle}" />
+                <Button Grid.Column="4" Content="System" Style="{StaticResource BottomNavButtonStyle}" />
+                <Button Grid.Column="5" Content="Alarms" Style="{StaticResource BottomNavButtonStyle}" />
+                <Button Grid.Column="6" Content="Log" Style="{StaticResource BottomNavButtonStyle}" />
+                <Button Grid.Column="7" Content="User Mgmt" Style="{StaticResource BottomNavButtonStyle}" />
+                <Button Grid.Column="8" Content="OEM" Style="{StaticResource BottomNavButtonStyle}" />
+                <Button Grid.Column="9" Content="Exit" Style="{StaticResource BottomNavButtonStyle}" Background="{StaticResource AccentBrush}" BorderBrush="#54CAE0" />
             </Grid>
         </Border>
     </Grid>
