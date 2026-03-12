@@ -23,7 +23,7 @@ public static class ServiceCollectionExtensions
         services.AddRfcpPlatformServices();
         services.AddDbContext<RfcpDbContext>(options => options.UseInMemoryDatabase("rfcp"));
         services.AddSingleton<IEventBus, InMemoryEventBus>();
-        services.AddSingleton<IPluginLoader, PluginLoader>();
+        services.AddSingleton<IPluginLoader, RFCP.Infrastructure.PluginLoader.PluginLoader>();
         services.AddSingleton<MemoryStateStore>();
         services.AddSingleton<RuntimeStateService>();
         services.AddScoped<DatabaseInitializer>();
