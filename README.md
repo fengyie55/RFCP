@@ -10,11 +10,13 @@ RFCP is a modular industrial-grade robot control platform for flexible manufactu
 
 ## Layered Architecture
 
-1. **Application Layer**: Production and recipe orchestration.
-2. **Control Core**: Scheduler, motion abstraction, action pipeline, state control.
-3. **Device Abstraction Layer**: `IRobot`, `IPLC`, `IVision`, `IConveyor`, `IIO` interfaces.
-4. **Driver Plugin Layer**: Loadable robot/PLC/vision driver implementations.
-5. **Hardware Layer**: Physical devices.
+1. **Business Layer (`RFCP.Business`)**: Production/recipe/task orchestration.
+2. **Control Core (`RFCP.Core`)**: Scheduler, motion abstraction, action pipeline, state control, deterministic control loop.
+3. **Device Abstraction (`RFCP.DeviceAbstraction`)**: `IRobot`, `IPLC`, `IVision`, `IConveyor`, `IIO` contracts.
+4. **Platform Layer (`RFCP.Platform`)**: Logging, alarm, configuration, record, and FA protocol integrations.
+5. **Plugin Layer (`RFCP.Plugins`)**: Driver plugin contract and dynamic plugin loading.
+6. **Driver Layer (`RFCP.Drivers`)**: Vendor-specific robot/PLC/vision drivers as plugin implementations.
+7. **GUI Layer (`RFCP.GUI`)**: Operator-facing application shell and presentation composition root.
 
 ## Real-Time Control Loop
 
@@ -48,6 +50,16 @@ Skeleton interfaces are included for:
 - REST API
 - MQTT
 - Modbus TCP
+
+## Solution Projects
+
+- `src/RFCP.DeviceAbstraction.csproj`
+- `src/RFCP.Core.csproj`
+- `src/RFCP.Platform.csproj`
+- `src/RFCP.Plugins.csproj`
+- `src/RFCP.Drivers.csproj`
+- `src/RFCP.Business.csproj`
+- `src/RFCP.GUI.csproj`
 
 ## Build
 

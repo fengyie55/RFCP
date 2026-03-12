@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+    <RootNamespace>RFCP.Business</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="RFCP.Core.csproj" />
+    <ProjectReference Include="RFCP.Platform.csproj" />
+    <ProjectReference Include="RFCP.DeviceAbstraction.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="Business/**/*.cs" />
+  </ItemGroup>
+</Project>

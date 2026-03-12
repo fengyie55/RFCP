@@ -1,8 +1,30 @@
 # RFCP Architecture
 
+## Project split overview
+
+The solution is decomposed into dedicated projects to keep dependency flow explicit and maintainable:
+
+- `RFCP.DeviceAbstraction`: hardware-facing contracts (`IRobot`, `IPLC`, `IVision`, etc.).
+- `RFCP.Core`: deterministic scheduling, action pipeline, motion engine, and state machine.
+- `RFCP.Platform`: cross-cutting platform services (logging, alarm, records, configuration) and factory integration protocols.
+- `RFCP.Plugins`: plugin contracts and runtime plugin loader.
+- `RFCP.Drivers`: vendor driver implementations that satisfy plugin contracts.
+- `RFCP.Business`: recipe/production/task orchestration for manufacturing workflows.
+- `RFCP.GUI`: operator-facing shell composition and presentation entry abstractions.
+
+## Dependency direction
+
+To keep architecture clean, projects should follow this direction:
+
+`RFCP.GUI` → `RFCP.Business` → (`RFCP.Core`, `RFCP.Platform`) → `RFCP.DeviceAbstraction`
+
+`RFCP.Drivers` → `RFCP.Plugins`
+
+All runtime hardware access must stay behind interfaces and plugin boundaries.
+
 ## Layer responsibilities
 
-### Application Layer
+### Business Layer
 Coordinates recipes, production logic, and task plans for each line or cell.
 
 ### Control Core
