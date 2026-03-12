@@ -1,4 +1,4 @@
-using RFCP.Core.RobotExecutor;
+using RobotExecutor = RFCP.Core.RobotExecutor.RobotExecutor;
 using RFCP.Core.Scheduler;
 using RFCP.Core.StateMachine;
 
