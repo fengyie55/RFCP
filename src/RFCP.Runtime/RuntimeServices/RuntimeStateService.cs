@@ -1,4 +1,4 @@
-using RFCP.Runtime.MemoryStateStore;
+using MemoryStateStore = RFCP.Runtime.MemoryStateStore.MemoryStateStore;
 using RFCP.Runtime.RuntimeModels;
 
 namespace RFCP.Runtime.RuntimeServices;
@@ -8,9 +8,9 @@ namespace RFCP.Runtime.RuntimeServices;
 /// </summary>
 public sealed class RuntimeStateService
 {
-    private readonly MemoryStateStore _stateStore;
+    private readonly MemoryStateStore.MemoryStateStore _stateStore;
 
-    public RuntimeStateService(MemoryStateStore stateStore)
+    public RuntimeStateService(MemoryStateStore.MemoryStateStore stateStore)
     {
         _stateStore = stateStore;
     }
