@@ -2,19 +2,23 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RFCP.DeviceAbstraction", "src/RFCP.DeviceAbstraction.csproj", "{6B9D6A1E-0B4A-4AA2-89D1-1A7E32A69812}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RFCP.DeviceAbstraction", "src/RFCP.DeviceAbstraction/RFCP.DeviceAbstraction.csproj", "{6B9D6A1E-0B4A-4AA2-89D1-1A7E32A69812}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RFCP.Core", "src/RFCP.Core.csproj", "{7407ACCC-2A5C-4E06-9A01-7522DFF6510D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RFCP.Core", "src/RFCP.Core/RFCP.Core.csproj", "{7407ACCC-2A5C-4E06-9A01-7522DFF6510D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RFCP.Platform", "src/RFCP.Platform.csproj", "{D33A5C57-0A1B-4422-A2D4-3648EA2DEAF9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RFCP.Platform", "src/RFCP.Platform/RFCP.Platform.csproj", "{D33A5C57-0A1B-4422-A2D4-3648EA2DEAF9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RFCP.Plugins", "src/RFCP.Plugins.csproj", "{AE61BF3B-7242-4A5D-8EDA-5915E5782BBE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RFCP.Plugins", "src/RFCP.Plugins/RFCP.Plugins.csproj", "{AE61BF3B-7242-4A5D-8EDA-5915E5782BBE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RFCP.Drivers", "src/RFCP.Drivers.csproj", "{7B5A2A33-D73E-460D-93F2-1C9D8BFD2A72}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RFCP.Drivers", "src/RFCP.Drivers/RFCP.Drivers.csproj", "{7B5A2A33-D73E-460D-93F2-1C9D8BFD2A72}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RFCP.Business", "src/RFCP.Business.csproj", "{F6A5E9D1-CF54-4DD9-92D9-B4ED0D37AB75}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RFCP.Business", "src/RFCP.Business/RFCP.Business.csproj", "{F6A5E9D1-CF54-4DD9-92D9-B4ED0D37AB75}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RFCP.GUI", "src/RFCP.GUI.csproj", "{2E29A763-2F62-4B21-8421-CC4CF5EC5C98}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RFCP.GUI", "src/RFCP.GUI/RFCP.GUI.csproj", "{2E29A763-2F62-4B21-8421-CC4CF5EC5C98}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RFCP.Runtime", "src/RFCP.Runtime/RFCP.Runtime.csproj", "{9C4E9E9A-1730-4D7F-8A66-03B577B3E29A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RFCP.Infrastructure", "src/RFCP.Infrastructure/RFCP.Infrastructure.csproj", "{13D60C66-71AF-4BA9-B935-16D637BFD3D1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -50,6 +54,14 @@ Global
 		{2E29A763-2F62-4B21-8421-CC4CF5EC5C98}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2E29A763-2F62-4B21-8421-CC4CF5EC5C98}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2E29A763-2F62-4B21-8421-CC4CF5EC5C98}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9C4E9E9A-1730-4D7F-8A66-03B577B3E29A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9C4E9E9A-1730-4D7F-8A66-03B577B3E29A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9C4E9E9A-1730-4D7F-8A66-03B577B3E29A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9C4E9E9A-1730-4D7F-8A66-03B577B3E29A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{13D60C66-71AF-4BA9-B935-16D637BFD3D1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{13D60C66-71AF-4BA9-B935-16D637BFD3D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{13D60C66-71AF-4BA9-B935-16D637BFD3D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{13D60C66-71AF-4BA9-B935-16D637BFD3D1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
