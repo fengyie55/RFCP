@@ -8,16 +8,27 @@ public interface IRobotAction
     Task Execute(ActionContext context, CancellationToken cancellationToken);
 }
 
-public sealed class ActionContext(IRobot robot, IVision vision)
+public sealed class ActionContext
 {
-    public IRobot Robot { get; } = robot;
-    public IVision Vision { get; } = vision;
+    public ActionContext(IRobot robot, IVision vision)
+    {
+        Robot = robot;
+        Vision = vision;
+    }
+
+    public IRobot Robot { get; }
+    public IVision Vision { get; }
     public Dictionary<string, object> Data { get; } = new();
 }
 
-public sealed class RobotActionPipeline(IEnumerable<IRobotAction> actions)
+public sealed class RobotActionPipeline
 {
-    private readonly IReadOnlyList<IRobotAction> _actions = actions.ToList();
+    private readonly IReadOnlyList<IRobotAction> _actions;
+
+    public RobotActionPipeline(IEnumerable<IRobotAction> actions)
+    {
+        _actions = actions.ToList();
+    }
 
     public async Task Run(ActionContext context, CancellationToken cancellationToken)
     {
@@ -28,7 +39,8 @@ public sealed class RobotActionPipeline(IEnumerable<IRobotAction> actions)
     }
 
     public static IReadOnlyList<string> DefaultPipeline =>
-    [
+    new[]
+    {
         "MoveSafe",
         "VisionDetect",
         "MovePrePick",
@@ -38,5 +50,5 @@ public sealed class RobotActionPipeline(IEnumerable<IRobotAction> actions)
         "MovePrePlace",
         "MovePlace",
         "OpenGripper"
-    ];
+    };
 }
