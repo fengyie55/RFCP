@@ -1,0 +1,8 @@
+<UserControl x:Class="RFCP.GUI.Controls.StatusIndicatorControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             MinHeight="30" MinWidth="120">
+    <Border BorderThickness="1" BorderBrush="#C8C8C8" CornerRadius="3" Padding="8,4">
+        <TextBlock Text="{Binding}"/>
+    </Border>
+</UserControl>
